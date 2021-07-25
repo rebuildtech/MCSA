@@ -1,0 +1,53 @@
+MCSA Part 1 : 
+
+Install and Configure Servers 
+
+· Configure Server Roles and Features - we have installed Active Directory and domain services.
+· Install and Administer Active Directory - Integrated with DNS
+
+Explanation : 
+
+ADDS  
+-------------------------
+
+We have installed a domain controller with a new forest called mcsa.com and having NETBIOS as MCSA.
+
+Reference Link : https://dinika-15.medium.com/installing-active-directory-on-windows-server-2012-r2-e9e614770588
+
+
+Adding a forest
+-------------------------
+
+Forest is the main Hub in your active directory where in you will have many domains controllers, additional domain controllers, 
+child domain controller which are part of your same forest. its an entity which is being managed at the top level
+
+Reference Link : https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-
+
+Adding a domain
+-------------------------
+
+This is as similar as what we have done for forest deployment . But rather we will use the "Add Domain to an existing forest(domain controller) option for doing this. We will be using this ADC just for the sake of redundancy and also to reduce 
+the latency between multiple regions.
+
+Reference Link : https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/deploy/install-a-replica-windows-server-2012-domain-controller-in-an-existing-domain--level-200-
+
+Joining a server to domain 
+-------------------------
+
+We have created a new VM and have joined that VM to your domain controller mcsa.com from the computer properties. we have even saw how the DNS entry is made and how NSLookup is being done from the end user machine to ensure we are joined to domain.
+
+
+Authentication Process. 
+-------------------------
+
+Active directoruy authentication process is a very important mechanism for your DC. it used a Kerberos authentication protocol on port 88 which client uses to contact your domain controller and then your domain controller searches for the details in the 'ntds.dit'(database) file. Once your domain controller knows that you are a valid user then it generates a TGT (Ticket Granting ticket) session token which will have the DC details and the session details about the lockout and all and this will be send to the end user machine. Thats when your client will get authenticated to your domain controller.
+For the internal communication in your DC . LDAP is the protocol being used which is on port 389 . and for authentication it is mentioned above (kerberos port 88)
+
+Reference Link : https://www.rebeladmin.com/2018/06/active-directory-authentication-works/#:~:text=Active%20Directory%20uses%20Kerberos%20version,server%20from%20windows%20server%202003.
+
+	Task :
+
+	Create a domain controller and a VM 
+	Add a user called MCSAuser1 using powershell with password 
+	Create a OU using Powershell
+	Move a mew VM to the created OU using powershell
