@@ -1,0 +1,54 @@
+Part 2 :
+
+Active Directory Groups :
+-----------------------------------------------
+
+Security and Distribution groups:
+-----------------------------------------------
+
+Security Groups are defined to allow a set of security policies or settings defined by the group policy or the administrator in your domain joined. In other words, its nothing but restricting / allowing the user / group to do a specific task in the domain defined manner.
+
+Distribution Groups are those which are used for Mail Distribution mainly. You often see a email in your Inbox where you are not tagged but see some groups like "abc@mcsa.com" but you still get the email to your inbox. The reason being this is that your user ID is added as a part of "ABC" Distribution group in Active Directory. You cannot use this group to define any security settings for a user.
+
+Reference Link :
+
+https://www.informit.com/articles/article.aspx?p=421048&seqNum=4
+
+
+Active Directory Trusts :
+-----------------------------------------------
+
+When you setup your AD environment. its possible to have multiple Domains and multiple forests and if there is a need to allow the users from . Lets say from (Forest ABC.com) to another (Forest XYZ.com) you need to establish a trust believe these 2 entities so that active directory understands that the user/objects are coming from an authenticated source.
+
+We have different types of Trusts available :
+
+1. Domain Trust - Here we have again 3 types of trust for Forest to Forest , Parent to child trust , External Trust etc. 
+2. Realm Trust  - This is used if you want to establish the trust between a windows server to a non-windows machine using Kerberos 
+
+Reference Link :
+
+https://techgenix.com/active-directory-trusts/#:~:text=There%20are%20four%20types%20of,forest%20trusts%2C%20and%20shortcut%20trusts.
+
+
+
+Recycle Bin 
+-----------------------------------------------
+
+This is one of the best feature that got added from Windows Server 2008R2 onwards.  This feature helps to restore the Deleted objects within the Tombstone Lifetime period . So if any user/administrator mistakenly deleted an object or something and you want to get that restored in your Active Directory back. You can use this Recycle Bin feature to get that restored back.
+
+By Default , Tombstone lifetime period is 60 days and it can be extended to 180 days in your active directory.
+
+Below articles/article gives a good reference talking about this. please give a Read. Credits to *stealth Bits* for such a nice documentation 
+
+Reference Link: 
+
+https://stealthbits.com/blog/active-directory-object-recovery-recycle-bin/#:~:text=The%20Active%20Directory%20Recycle%20Bin,Services%2C%20or%20rebooting%20domain%20controllers.
+
+
+
+
+PS : I am not promoting any Vendors , All the docs are purely based on my research for the specific topic only.
+
+
+
+
